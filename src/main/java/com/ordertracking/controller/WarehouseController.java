@@ -1,6 +1,7 @@
 package com.ordertracking.controller;
 
-import com.ordertracking.bean.Warehouse;
+import com.ordertracking.bean.Order;
+import com.ordertracking.service.WarehouseService;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 import com.thoughtworks.xstream.io.json.JsonHierarchicalStreamDriver;
@@ -28,21 +29,21 @@ public class WarehouseController {
          * @return
          * @throws IOException
          */
-        @RequestMapping(value="/warehouse.do")
+        @RequestMapping(value="/inbound.do")
         public void login(HttpServletRequest request, HttpServletResponse response) throws IOException {
             String position = request.getParameter("position");
             LOGGER.info("position:" + position);
-            /*WarehouseService WarehouseService = new WarehouseService();
-            Warehouse MO = WarehouseService.warehouse(position);*/
-            Map<String, Warehouse> map = new HashMap<String, Warehouse>();
-            Warehouse MOA01 = new Warehouse();
+            WarehouseService WarehouseService = new WarehouseService();
+            Order MO = WarehouseService.inbound(position);
+            Map<String, Order> map = new HashMap<String, Order>();
+/*            Order MOA01 = new Order();
             MOA01.setMO("111111111");
             MOA01.setQuantity("23");
-            Warehouse MOA02 = new Warehouse();
+            Order MOA02 = new Order();
             MOA02.setMO("222222");
             MOA02.setQuantity("33333");
             map.put("A01-1", MOA01);
-            map.put("A01-2", MOA02);
+            map.put("A01-2", MOA02);*/
 
             XStream xstream = new XStream(new JsonHierarchicalStreamDriver(){
                 public HierarchicalStreamWriter createWriter(Writer out) {

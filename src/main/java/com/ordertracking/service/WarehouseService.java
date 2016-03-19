@@ -1,7 +1,7 @@
 package com.ordertracking.service;
 
 import com.ordertracking.dao.WareHouseDao;
-import com.ordertracking.bean.Warehouse;
+import com.ordertracking.bean.Order;
 
 import java.util.logging.Logger;
 
@@ -12,10 +12,10 @@ public class WarehouseService {
 
     private static final Logger LOGGER = Logger.getLogger(WarehouseService.class.getName());
 
-    public Warehouse warehouse(String bin) {
+    public Order inbound(String MO) {
 
         WareHouseDao warehousedao = new WareHouseDao();
-        Warehouse BIN = WareHouseDao.getMoRefByBin(bin);
+        Order BIN = WareHouseDao.getMoRefByMO(MO);
         if (BIN == null) {
             return null;
         }

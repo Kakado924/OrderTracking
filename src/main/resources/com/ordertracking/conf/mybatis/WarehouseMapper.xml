@@ -12,7 +12,7 @@
     <!--
         根据id查询得到一个user对象
      -->
-    <resultMap id="baseResultMap" type="com.ordertracking.bean.Warehouse">
+    <resultMap id="baseResultMap" type="com.ordertracking.bean.Order">
         <result column="MTSMTO" property="MTSMTO"></result>
         <result column="MO" property="MO"></result>
         <result column="Priority" property="Priority"></result>
@@ -32,14 +32,11 @@
         <result column="WarehouseBin" property="WarehouseBin"></result>
     </resultMap>
 
-    <select id="getMoRefByBin" parameterType="String"
+    <select id="getMoRefByMO" parameterType="String"
             resultMap="baseResultMap">
-        select * from MOList where WarehouseBin like #{WarehouseBin}
+        select * from MOList where MO like #{MO}
     </select>
-
-    <update id="updateStatus" parameterType="baseResultMap">
-        UPDATE MOList SET Status=#{Status} where MO=#{MO}
+    <update id="updateStatus">
+    UPDATE MOList SET Status=#{Status} where MO=#{MO}
     </update>
-
-
 </mapper>

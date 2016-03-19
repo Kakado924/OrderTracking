@@ -15,8 +15,8 @@
     <resultMap id="baseResultMap" type="com.ordertracking.bean.User">
         <result column="ID" property="id"></result>
         <result column="Account" property="name"></result>
-        <result column="psd" property="password"></result>
-        <result column="authority" property="authority"></result>
+        <result column="Password" property="password"></result>
+        <result column="Limit" property="authority"></result>
     </resultMap>
     <select id="getUser" parameterType="int"
             resultMap="baseResultMap">

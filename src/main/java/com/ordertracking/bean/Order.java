@@ -3,7 +3,7 @@ package com.ordertracking.bean;
 /**
  * Created by chlei on 2016/3/6.
  */
-public class Warehouse {
+public class Order {
     private String MTSMTO;
     private String MO;
     private String Priority;
@@ -22,7 +22,7 @@ public class Warehouse {
     private String QuantityRemain;
     private String WarehouseBin;
 
-    public Warehouse(String MTSMTO, String MO, String Priority,String Reference,String Quantity, String Family, String DCCoverageDay, String MOCreateDate, String BasicFinishDate, String DC, String DCEstimatedGRDate, String InhouseSubcon, String TestLine, String Status, String RecordTime, String QuantityRemain, String WarehouseBin) {
+    public Order(String MTSMTO, String MO, String Priority, String Reference, String Quantity, String Family, String DCCoverageDay, String MOCreateDate, String BasicFinishDate, String DC, String DCEstimatedGRDate, String InhouseSubcon, String TestLine, String Status, String RecordTime, String QuantityRemain, String WarehouseBin) {
         this.MTSMTO= MTSMTO;
         this.MO=MO;
         this.Priority=Priority;
@@ -42,7 +42,7 @@ public class Warehouse {
         this.WarehouseBin=WarehouseBin;
     }
 
-    public Warehouse() {
+    public Order() {
         super();
     }
 

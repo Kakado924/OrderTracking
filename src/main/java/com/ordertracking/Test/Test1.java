@@ -1,7 +1,7 @@
 package com.ordertracking.Test;
 
 import com.ordertracking.bean.User;
-import com.ordertracking.bean.Warehouse;
+import com.ordertracking.bean.Order;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 import com.thoughtworks.xstream.io.json.JsonHierarchicalStreamDriver;
@@ -38,11 +38,11 @@ public class Test1 {
         xstream3.alias("user",User.class);
         xstream3.toXML(users, new PrintWriter(System.out));*/
 
-        Map<String, Warehouse> map = new HashMap<String, Warehouse>();
-        Warehouse MOA01 = new Warehouse();
+        Map<String, Order> map = new HashMap<String, Order>();
+        Order MOA01 = new Order();
         MOA01.setMO("111111111");
         MOA01.setQuantity("23");
-        Warehouse MOA02 = new Warehouse();
+        Order MOA02 = new Order();
         MOA02.setMO("222222");
         MOA02.setQuantity("33333");
         map.put("A01-1", MOA01);

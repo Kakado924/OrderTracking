@@ -1,5 +1,6 @@
 package com.ordertracking.controller;
 
+import com.ordertracking.service.LoginService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -27,13 +28,12 @@ public class LoginController {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         LOGGER.info("username : " + username + "password:" + password);
-        /*LoginService loginService = new LoginService();
-        int authority = loginService.login(username, password);*/
-        int authority = 1;
+        LoginService loginService = new LoginService();
+        int authority = loginService.login(username, password);
         if (authority == 1) {
             return new ModelAndView("Storage");
         }
         // 根据返回的结果，跳转到对应的页面
-        return new ModelAndView("home");
+        return new ModelAndView("login");
     }
 }

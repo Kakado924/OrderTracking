@@ -1,6 +1,6 @@
 package com.ordertracking.dao;
 
-import com.ordertracking.bean.Warehouse;
+import com.ordertracking.bean.Order;
 import com.ordertracking.utils.SQLServerManager;
 import org.apache.ibatis.session.SqlSession;
 
@@ -10,18 +10,18 @@ import org.apache.ibatis.session.SqlSession;
  */
 public class WareHouseDao {
 
-    public static Warehouse getMoRefByBin(String bin) {
+    public static Order getMoRefByMO(String MO) {
         SqlSession session= SQLServerManager.getSqlSession();
-        String statement = "com.ordertracking.mapping.WarehouseMapper.getMoRefByBin";
-        Warehouse BIN = session.selectOne(statement,bin);
-        return BIN;
+        String statement = "com.ordertracking.mapping.WarehouseMapper.getMoRefByMO";
+        Order order = session.selectOne(statement,MO);
+        return order;
     }
 
-    public void updateStatus(Warehouse bin) {
+    public void updateStatus(Order order) {
         SqlSession session= SQLServerManager.getSqlSession();
-        bin.setStatus("已入库");
+        order.setStatus("已入库");
         String statement = "com.ordertracking.mapping.WarehouseMapper.updateStatus";
-        session.update(statement,bin);
+        session.update(statement,order);
         session.commit();
     }
 }
