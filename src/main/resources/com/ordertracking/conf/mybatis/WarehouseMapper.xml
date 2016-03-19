@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 为这个mapper指定一个唯一的namespace，namespace的值习惯上设置成包名+sql映射文件名，这样就能够保证namespace的值是唯一的
+例如namespace="me.gacl.mapping.userMapper"就是me.gacl.mapping(包名)+userMapper(userMapper.xml文件去除后缀)
+ -->
+<mapper namespace="com.ordertracking.mapping.WarehouseMapper">
+    <!-- 在select标签中编写查询的SQL语句， 设置select标签的id属性为getUser，id属性值必须是唯一的，不能够重复
+    使用parameterType属性指明查询时使用的参数类型，resultType属性指明查询返回的结果集类型
+    resultType="me.gacl.domain.User"就表示将查询结果封装成一个User类的对象返回
+    User类就是users表所对应的实体类
+    -->
+    <!--
+        根据id查询得到一个user对象
+     -->
+    <resultMap id="baseResultMap" type="com.ordertracking.bean.Warehouse">
+        <result column="MTSMTO" property="MTSMTO"></result>
+        <result column="MO" property="MO"></result>
+        <result column="Priority" property="Priority"></result>
+        <result column="Reference" property="Reference"></result>
+        <result column="Quantity" property="Quantity"></result>
+        <result column="Family" property="Family"></result>
+        <result column="DCCoverageDay" property="DCCoverageDay"></result>
+        <result column="MOCreateDate" property="MOCreateDate"></result>
+        <result column="BasicFinishDate" property="BasicFinishDate"></result>
+        <result column="DC" property="DC"></result>
+        <result column="DCEstimatedGRDate" property="DCEstimatedGRDate"></result>
+        <result column="InhouseSubcon" property="InhouseSubcon"></result>
+        <result column="TestLine" property="TestLine"></result>
+        <result column="Status" property="Status"></result>
+        <result column="RecordTime" property="RecordTime"></result>
+        <result column="QuantityRemain" property="QuantityRemain"></result>
+        <result column="WarehouseBin" property="WarehouseBin"></result>
+    </resultMap>
+
+    <select id="getMoRefByBin" parameterType="String"
+            resultMap="baseResultMap">
+        select * from MOList where WarehouseBin like #{WarehouseBin}
+    </select>
+
+    <update id="updateStatus" parameterType="baseResultMap">
+        UPDATE MOList SET Status=#{Status} where MO=#{MO}
+    </update>
+
+
+</mapper>
