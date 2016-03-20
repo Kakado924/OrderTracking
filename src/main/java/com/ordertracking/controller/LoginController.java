@@ -30,6 +30,7 @@ public class LoginController {
         LOGGER.info("username : " + username + "password:" + password);
         LoginService loginService = new LoginService();
         int authority = loginService.login(username, password);
+        //int authority = 1;
         if (authority == 1) {
             return new ModelAndView("Storage");
         }
