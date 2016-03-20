@@ -31,10 +31,10 @@ public class WarehouseController {
          */
         @RequestMapping(value="/inbound.do")
         public void login(HttpServletRequest request, HttpServletResponse response) throws IOException {
-            String position = request.getParameter("position");
-            LOGGER.info("position:" + position);
+            String mo = request.getParameter("mo");
+            LOGGER.info("MO:" + mo);
             WarehouseService WarehouseService = new WarehouseService();
-            Order MO = WarehouseService.inbound(position);
+            Order MO = WarehouseService.inbound(mo);
             Map<String, Order> map = new HashMap<String, Order>();
 /*            Order MOA01 = new Order();
             MOA01.setMO("111111111");
