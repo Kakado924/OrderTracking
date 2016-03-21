@@ -34,5 +34,6 @@ mydbname： 改成自己的数据库名字
     <mappers>
         <mapper resource="com/ordertracking/conf/mybatis/userMapper.xml"/>
         <mapper resource="com/ordertracking/conf/mybatis/WarehouseMapper.xml"/>
+        <mapper resource="com/ordertracking/conf/mybatis/BinListMapper.xml"/>
     </mappers>
 </configuration>

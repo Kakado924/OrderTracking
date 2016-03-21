@@ -19,11 +19,57 @@
         					"mo":MOValue
         				},
         				success:function(responseData){
-        				    alert(responseData[0].MO)
-                            alert(responseData);
-                            $.each(responseData.list, function(i, item) {
-                                alert(item.id);
-                            	});
+        				    var map = {};
+                            
+                            for (var i = 0; i < responseData.length; i++) {
+								var data = new Object();
+                                data.MO = responseData[i].MO;
+                                data.Reference = responseData[i].Reference;								
+                                map[responseData[i].WarehouseBin] = data;
+                                }							
+							var keyList = []; 
+							$.each(map,function(key,values){ 
+								keyList.push(key);
+							}); 
+                             for (var tableNumber = 44 ; tableNumber > 33 ; tableNumber --) {
+                            	var table=$("<table class=\"table table-bordered text-center table-hover \">");
+                            	$("#orderTable").append(table);
+								var header=$("<tr><th>A"+tableNumber+"</th><th>MO</th><th>Ref</th></tr>");
+                            	table.append(header);
+                            	for(var i = 0;i < 4;i++)
+                            	{	
+									var tr=$("<tr></tr>");
+									table.append(tr);
+                            		for(var j = 0;j < 3;j++)
+                            			{
+                            				var td="";
+											var rowId="A"+tableNumber+"-"+(i+1);
+											
+											if ((j == 0)) {
+												
+												td=$("<td>"+rowId+"</td>");
+											}
+                            				else if ((j == 1)) {
+												
+												if ($.inArray(rowId, keyList) != -1 ) {
+													td=$("<td>"+map[rowId].MO+"</td>");
+												}else {
+													td=$("<td></td>");
+													}
+                            					}
+                            				else if ((j == 2)) {
+												if ($.inArray(rowId, keyList) != -1 ) {
+													td=$("<td>"+map[rowId].Reference+"</td>");
+												}else{
+													td=$("<td></td>");
+												}    
+											}												
+                            				tr.append(td);
+                            			}
+                            	}
+                            		$("#orderTable").append("</table>");
+                            }
+
         				},
         				error:function(){
         					alert("system error");
@@ -79,7 +125,7 @@
             </form>
             <div id="orderTable">
             </div>
-            <input type="button" value="添加表格" onClick="CreateTable(3,6)" >
+            <input type="button" value="添加表格" onClick="CreateTable(5,3)" >
         </div>
     </body>
 </html>

@@ -10,7 +10,9 @@ import com.thoughtworks.xstream.io.json.JsonWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Writer;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -38,21 +40,25 @@ public class Test1 {
         xstream3.alias("user",User.class);
         xstream3.toXML(users, new PrintWriter(System.out));*/
 
-        Map<String, Order> map = new HashMap<String, Order>();
-        Order MOA01 = new Order();
-        MOA01.setMO("111111111");
-        MOA01.setQuantity("23");
-        Order MOA02 = new Order();
-        MOA02.setMO("222222");
-        MOA02.setQuantity("33333");
-        map.put("A01-1", MOA01);
-        map.put("A01-2", MOA02);
+        List<Order> orders = new ArrayList<Order>();
+        Order order1 = new Order();
+        order1.setMO("1111");
+        order1.setWarehouseBin("A01-1");
+        order1.setReference("oooo");
+
+        Order order2 = new Order();
+        order2.setMO("1111");
+        order2.setWarehouseBin("A01-1");
+        order2.setReference("oooo");
+
+        orders.add(order1);
+        orders.add(order2);
         XStream xstream3 = new XStream(new JsonHierarchicalStreamDriver(){
             public HierarchicalStreamWriter createWriter(Writer out) {
                 return new JsonWriter(out, JsonWriter.DROP_ROOT_MODE);
             }
         });
         xstream3.alias("user",User.class);
-        xstream3.toXML(map, new PrintWriter(System.out));
+        xstream3.toXML(orders, new PrintWriter(System.out));
     }
 }
