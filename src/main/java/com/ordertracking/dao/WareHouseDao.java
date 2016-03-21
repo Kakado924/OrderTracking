@@ -27,7 +27,7 @@ public class WareHouseDao {
         session.commit();
     }
 
-<<<<<<< HEAD
+
 /*    public void addMoToWarehouse(List<Order> orders) {
         SqlSession session= SQLServerManager.getSqlSession();
         String statement = "com.ordertracking.mapping.BinListMapper.addMoToWarehouse";
@@ -45,15 +45,15 @@ public class WareHouseDao {
     }
 
 
-=======
-    public void addMoToWarehouse(List<Order> orders) {
+
+ /*   public void addMoToWarehouse(List<Order> orders) {
         SqlSession session= SQLServerManager.getSqlSession();
         String statement = "com.ordertracking.mapping.BinListMapper.addMoToWarehouse";
         session.insert(statement,orders);
         session.commit();
-    }
+    }*/
 
->>>>>>> a0b08defbe47e59715e031ec1bb66dc58f074c6b
+
     public List<Order> getInboundVisual() {
         SqlSession session= SQLServerManager.getSqlSession();
         String statement = "com.ordertracking.mapping.BinListMapper.getInboundData";
