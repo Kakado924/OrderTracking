@@ -8,7 +8,6 @@
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <script type="text/javascript">
         	$(function(){
-
         		$("#submit").click(function(){
         		    var MOValue = $("#mo").val();
         			$.ajax({
@@ -31,7 +30,11 @@
 							$.each(map,function(key,values){ 
 								keyList.push(key);
 							}); 
+<<<<<<< HEAD
                              for (var tableNumber = 44 ; tableNumber > 33 ; tableNumber --) {
+=======
+                             for (var tableNumber = 44 ; tableNumber > 43 ; tableNumber --) {
+>>>>>>> a0b08defbe47e59715e031ec1bb66dc58f074c6b
                             	var table=$("<table class=\"table table-bordered text-center table-hover \">");
                             	$("#orderTable").append(table);
 								var header=$("<tr><th>A"+tableNumber+"</th><th>MO</th><th>Ref</th></tr>");

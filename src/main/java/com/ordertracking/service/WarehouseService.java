@@ -24,8 +24,27 @@ public class WarehouseService {
             warehousedao.updateStatus(order);
             addMoToWarehouse(order);
             return warehousedao.getInboundVisual();
+<<<<<<< HEAD
         }
         return warehousedao.getInboundVisual();
+    }
+
+    private void addMoToWarehouse(Order order) {
+        WareHouseDao warehousedao = new WareHouseDao();
+        String orderBin = order.getWarehouseBin();
+        String[] bins = orderBin.split(",");
+        int length = bins.length;
+        List<Order> orders = new ArrayList<Order>();
+        for (int i = 0; i < length; i ++) {
+            Order temp = new Order();
+            temp.setWarehouseBin(bins[i]);
+            temp.setMO(order.getMO());
+            temp.setReference(order.getReference());
+            orders.add(temp);
+=======
+>>>>>>> a0b08defbe47e59715e031ec1bb66dc58f074c6b
+        }
+        warehousedao.addMoToWarehouse(orders);
     }
 
     private void addMoToWarehouse(Order order) {
